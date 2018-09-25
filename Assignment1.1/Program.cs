@@ -4,49 +4,52 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment1._1
+namespace Assignment
 {
     class Program
     {
+          
+
         static void Main(string[] args)
         {
             Rectangle rectangle = new Rectangle();
-            Console.Write("Create Your Rectangle");
-            Console.WriteLine();
             int length = 0;
             String stringLength = string.Empty; ;
             do
             {
-                Console.Write("Enter Length Of Rectangle: ");
+                Console.Write("********************** Assignment#1 Unit Testing ********************** \n\n");
+                Console.Write("Please provide details for Rectangle below- \n");
+                Console.Write("Please Enter Length: ");
                 stringLength = Console.ReadLine();
-                if (stringLength == "")
+                if (stringLength == null)
                 {
-                    Console.WriteLine("Please Enter Length..");
+                    Console.WriteLine("Please enter data...");
                 }
+               
             } while (!int.TryParse(stringLength, out length) || (length <= 0 || length > 100));
             int width = 0;
             String stringWidth = string.Empty; ;
             do
             {
-                Console.Write("Enter Width Of Rectangle: ");
+                Console.Write("Please Enter Width: ");
                 stringWidth = Console.ReadLine();
-                if (stringWidth == "")
+                if (stringWidth == null)
                 {
-                    Console.WriteLine("Please Enter Length..");
+                    Console.WriteLine("Please enter data...");
                 }
             } while (!int.TryParse(stringWidth, out width) || (width <= 0 || width > 100));
-            rectangle.ChangeLength(length);
-            rectangle.ChangeWidth(width);
+            rectangle.SetLength(length);
+            rectangle.SetWidth(width);
             bool adding = true;
             Program p = new Program();
             while (adding == true)
             {
                 int choose = Program.ValidateMenuSelect();
-                Console.WriteLine("You Selected Option is : {0}", choose);
+                Console.WriteLine("You selected: {0}\n", choose);
                 if (choose == 1)
                 {
-                    int len = rectangle.AddLength();
-                    Console.WriteLine("Your Rectangle Length is : {0}", len);
+                    int lnt = rectangle.GetLength();
+                    Console.WriteLine("Rectangle length is: {0}\n", lnt);
                 }
                 else if (choose == 2)
                 {
@@ -54,20 +57,22 @@ namespace Assignment1._1
                     String length_New1 = string.Empty;
                     do
                     {
-                        Console.Write("Enter Length Of Rectangle: {0}");
+                        Console.Write("Please Enter Length: ");
                         length_New1 = Console.ReadLine();
-                        if (length_New1 == "")
+                        if (length_New1 == null)
                         {
-                            Console.WriteLine("Please Enter Length..");
+                            Console.WriteLine("Please enter data...");
                         }
-                    } while (!int.TryParse(length_New1, out length_New) || (length_New <= 0 || length_New > 100));
-                    rectangle.ChangeLength(length_New);
-                    Console.WriteLine("Your Length Of Rectangle is..{0} ", length_New);
+
+                    } while (!int.TryParse(length_New1, out length_New));
+                     rectangle.SetLength(length_New);
+                    Console.WriteLine("Rectangle length is: {0}\n", length_New);
                 }
+               
                 else if (choose == 3)
                 {
-                    int wide = rectangle.AddWidth();
-                    Console.WriteLine("Your Rectangle Length is : {0}", wide);
+                    int widt = rectangle.GetWidth();
+                    Console.WriteLine("Rectangle width is: {0}\n", widt);
                 }
                 else if (choose == 4)
                 {
@@ -77,31 +82,37 @@ namespace Assignment1._1
                     {
                         Console.Write("Enter Width Of Rectangle: ");
                         width_New1 = Console.ReadLine();
-                        if (width_New1 == "")
+                        if (width_New1 == null)
                         {
                             Console.WriteLine("Please Enter Length..");
                         }
                     } while (!int.TryParse(width_New1, out width_New) || (width_New <= 0 || width_New > 100));
-                    rectangle.ChangeWidth(width_New);
-                    Console.WriteLine("Your Width Of Rectangle is..{0} ", width_New);
+                    rectangle.SetWidth(width_New);
+                    Console.WriteLine("Rectangle width is: {0}", width_New);
                 }
                 else if (choose == 5)
                 {
-                    int perimeter = rectangle.Perimeter();
-                    Console.WriteLine("Rectangle Perimeter is : {0}", perimeter);
+                    int Getperimeter = rectangle.Getperimeter();
+                    Console.WriteLine("Rectangle Perimeter is: {0}\n", Getperimeter);
                 }
                 else if (choose == 6)
                 {
-                    int area = rectangle.Area();
-                    Console.WriteLine("Rectangle Area is : {0}", area);
+                    int Getarea = rectangle.Getarea();
+                    Console.WriteLine("Rectangle Area is: {0}\n", Getarea);
                 }
-                else
+                else if (choose==7)
+                {
+                    Console.WriteLine("The Application is now closing... Press any key to EXIT");
+                    Console.ReadLine();
+                    Environment.Exit(0);
+                }
+                else 
                 {
                     Console.ReadKey();
 
                 }
-                Console.WriteLine("Do you want choose functionality Y /N ..? ");
-                if (Console.ReadLine() != "Y")
+                Console.WriteLine("Would you like to continue? ");
+                if (Console.ReadLine() != "Yes")
                 {
                     adding = false;
                 }
@@ -115,6 +126,7 @@ namespace Assignment1._1
             bool validMenuSelect = false;
             while (validMenuSelect == false)
             {
+                Console.WriteLine("************************************");
                 Console.WriteLine("1 = Get Rectangle Length");
                 Console.WriteLine("2 = Change Rectangle Length");
                 Console.WriteLine("3 = Get Rectangle Width");
@@ -122,7 +134,8 @@ namespace Assignment1._1
                 Console.WriteLine("5 = Get Rectangle Perimeter");
                 Console.WriteLine("6 = Get Rectangle Area");
                 Console.WriteLine("7 =  Exit\n");
-                Console.Write("Please select any option  ");
+                Console.WriteLine("************************************");
+                Console.Write("Please select an option ");
                 userInput = Console.ReadLine();
                 if (userInput != "1" &&
                     userInput != "2" &&
@@ -132,7 +145,7 @@ namespace Assignment1._1
                     userInput != "6" &&
                     userInput != "7")
                 {
-                    Console.WriteLine("Invalid Choose");
+                    Console.WriteLine("Invalid input! Please Try Again");
                 }
                 else
                 {

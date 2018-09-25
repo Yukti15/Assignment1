@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment1._1
+namespace Assignment
 {
     public class Rectangle
     {
@@ -13,8 +13,8 @@ namespace Assignment1._1
 
         public Rectangle()
         {
-            length = 1;
-            width = 1;
+            length = 5;
+            width = 5;
         }
 
         public Rectangle(int length, int width)
@@ -34,23 +34,23 @@ namespace Assignment1._1
             return this.length;
         }
 
-        public int AddWidth()
+        public int GetWidth()
         {
             return width;
         }
 
-        public int ChangeWidth(int width)
+        public int SetWidth(int width)
         {
             this.width = width;
             return this.width;
         }
 
-        public int Perimeter()
+        public int Getperimeter()
         {
-            return (width * 2) + (length * 2);
+            return 2*(length + width);
         }
 
-        public int Area()
+        public int Getarea()
         {
             return length * width;
         }
